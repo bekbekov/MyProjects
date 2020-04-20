@@ -17,7 +17,7 @@
               if (ship.hits[index] === "hit") {
 				view.displayMessage("Oops, you already hit that location!");
 				return true;
-               } if (index >= 0) {
+               } else if (index >= 0) {
                   ship.hits[index] = "hit";
                   view.displayHit(guess);
                   view.displayMessage("HIT!");
@@ -42,7 +42,7 @@
               }
           }
           return true;
-        }
+        },
 
       generateShipLocations: function() {
           let locations;
@@ -52,7 +52,9 @@
               } while (this.collision(locations));
               this.ships[i].locations = locations;
           }
-      },
+          console.log("Ships array: ");
+          console.log(this.ships);
+        },
 
       generateShip: function() {
           let direction = Math.floor(Math.random() * 2);
@@ -93,7 +95,7 @@
     let view = {
       displayMessage: function(msg) {
             let messageArea = document.getElementById("messageArea");
-            messageArea.innerHTML(msg); // messageArea.innerHTML = msg;
+            messageArea.innerHTML = msg;
       },
       displayHit: function(location) {
             let cell = document.getElementById(location);
